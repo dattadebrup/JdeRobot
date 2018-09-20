@@ -19,7 +19,7 @@ cmake_minimum_required(VERSION 3.3)
 if (EXISTS buildpresets_userdefined.cmake)
 	include(buildpresets_userdefined.cmake)
 endif()
-include(buildpresets.cmake)
+include(cmake/buildpresets.cmake)
 
 #include jderobot macros
 include(cmake/jderobot.cmake)
@@ -196,7 +196,7 @@ list_subdirectories2( LIST_TOOLS ${CMAKE_CURRENT_SOURCE_DIR}/src/tools/ 1)
 INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Deps DESTINATION ${CMAKE_INSTALL_PREFIX}/share/jderobot COMPONENT setup)
 
 # Install ROS Launch files
-INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scripts/launch DESTINATION ${CMAKE_INSTALL_PREFIX}/share/jderobot COMPONENT setup)
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/assets/gazebo/launch DESTINATION ${CMAKE_INSTALL_PREFIX}/share/jderobot COMPONENT setup)
 
 # Install setup.bash
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/setup.bash DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT setup)
@@ -219,8 +219,8 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/setup.bash DESTINATION ${CMAKE_INSTALL
 ###################
 
 configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/cmake/cmake_uninstall.cmake"
     IMMEDIATE @ONLY)
 
 add_custom_target(uninstall
